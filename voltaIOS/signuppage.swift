@@ -11,7 +11,9 @@ import Alamofire
 import SwiftyJSON
 
 class signuppage: UIViewController {
-
+    
+    var endpoint = GlobalVariable.setting.endpoint
+    
     @IBOutlet weak var username_txt: UITextField!
     @IBOutlet weak var email_txt: UITextField!
     @IBOutlet weak var mobile_txt: UITextField!
@@ -52,8 +54,8 @@ class signuppage: UIViewController {
                                                  "login" : email_txt.text!,
                                                  "avatar_path" : "-"]
                 let header : HTTPHeaders = ["Content-Type" : "application/json"]
-            
-                Alamofire.request("http://192.168.1.41:5000/token/register", method: .post , parameters: parameter as Parameters, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
+                
+                Alamofire.request("\(endpoint)token/register", method: .post , parameters: parameter as Parameters, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
                     if(responseData.response?.statusCode == 200){
                     
                     print("Return 200 in Registration")

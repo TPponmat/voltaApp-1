@@ -12,14 +12,14 @@ import SwiftyJSON
 import SwiftKeychainWrapper
 
 class signinpage: UIViewController {
-
+    
+    var endpoint = GlobalVariable.setting.endpoint
+    
     @IBOutlet weak var login_btn: UIButton!
     @IBOutlet weak var back_btn: UIButton!
     
     @IBOutlet weak var username_txt: UITextField!
     @IBOutlet weak var password_txt: UITextField!
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +34,7 @@ class signinpage: UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
 
-    
     @IBAction func back_btn_pressed(_ sender: UIButton) {
     
         
@@ -61,7 +59,7 @@ class signinpage: UIViewController {
                                              ]
             let header : HTTPHeaders = ["Content-Type" : "application/json"]
             
-            Alamofire.request("http://192.168.1.41:5000/token/login", method: .post , parameters: parameter as Parameters, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
+            Alamofire.request("\(endpoint)token/login", method: .post , parameters: parameter as Parameters, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
                     if(responseData.response?.statusCode == 200){
                         
                         print("Return 200 in Registration")

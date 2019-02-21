@@ -10,21 +10,17 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
+
 class ViewController: UIViewController {
+    
+    var endpoint = GlobalVariable.setting.endpoint
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         let header : HTTPHeaders = ["Content-Type" :"application/json"]
-        //
-        //
-        Alamofire.request("http://192.168.1.41:5000/", method: .get, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
-            if((responseData.result.value) != nil){
-                
-                print("Server Online !!!")
-                
-            }
+
+        Alamofire.request(endpoint, method: .get, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
             if(responseData.response?.statusCode == 200){
                 
                 print("Return 200")
@@ -39,12 +35,8 @@ class ViewController: UIViewController {
                 
                 
             }
-            //
-            //
-            
             
         }
-        
         
     }
     
