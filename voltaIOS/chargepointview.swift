@@ -12,7 +12,9 @@ import SwiftyJSON
 import Alamofire
 
 class chargepointview: UIViewController {
-
+    
+    var endpoint = GlobalVariable.setting.endpoint
+    
     @IBOutlet weak var cpid_lb: UILabel!
     @IBOutlet weak var datetime_lb: UILabel!
     @IBOutlet weak var time_lb: UILabel!
@@ -22,15 +24,10 @@ class chargepointview: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let accessTokenString: String? = KeychainWrapper.standard.string(forKey: "accessToken")
-        let refreshTokenString: String? = KeychainWrapper.standard.string(forKey: "refreshToken")
         let chargeIDString: String? = KeychainWrapper.standard.string(forKey: "chargeID")
-        
         cpid_lb.text = chargeIDString!
         getCurrentDate()
         getCurrentTime()
-        
         
     }
     
@@ -54,9 +51,6 @@ class chargepointview: UIViewController {
         time_lb.text = date_str
     }
     
-    
-    
-    
     //MARK :Action
     
     @IBAction func start_charge_pressed(_ sender: UIButton) {
@@ -71,26 +65,21 @@ class chargepointview: UIViewController {
         let header : HTTPHeaders = ["Content-Type" : "application/json",
                                     "Authorization" : "Bearer \(accessTokenString!)"]
         
-        Alamofire.request("http://192.168.1.41:5000/api/active", method: .post , parameters: parameter as Parameters, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
-            if(responseData.response?.statusCode == 200){
+        Alamofire.request("\(endpoint)api/active", method: .post , parameters: parameter as Parameters, encoding: JSONEncoding.default, headers : header ).responseJSON { (responseData) -> Void in
+                if(responseData.response?.statusCode == 200){
             
-                DispatchQueue.main.async {
-                    let stoppage = self.storyboard?.instantiateViewController(withIdentifier: "stopchargeview") as! stopchargeview
-                    let appDelegate = UIApplication.shared.delegate
-                    appDelegate?.window??.rootViewController = stoppage
-                    
+                    DispatchQueue.main.async {
+                        let stoppage = self.storyboard?.instantiateViewController(withIdentifier: "stopchargeview") as! stopchargeview
+                        let appDelegate = UIApplication.shared.delegate
+                        appDelegate?.window??.rootViewController = stoppage
+                        
+                    }
+        
                 }
         
             }
-                
-        
-        
-        
-    }
-    
-    
 
-}
+    }
     
     @IBAction func mainmenu_pressed(_ sender: UIButton) {
     
@@ -100,7 +89,6 @@ class chargepointview: UIViewController {
             appDelegate?.window??.rootViewController = page
             
         }
-    
     
     }
     

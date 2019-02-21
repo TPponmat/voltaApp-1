@@ -20,6 +20,7 @@
 		BC0451CC221EBE7100C3573A /* sidebarview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0451CB221EBE7100C3573A /* sidebarview.swift */; };
 		BC0451CE221EED4B00C3573A /* chargepointview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0451CD221EED4B00C3573A /* chargepointview.swift */; };
 		BC0451D2221F10A300C3573A /* stopchargeview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0451D1221F10A300C3573A /* stopchargeview.swift */; };
+		BC0451D6221F352F00C3573A /* constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0451D5221F352F00C3573A /* constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		BC0451CB221EBE7100C3573A /* sidebarview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sidebarview.swift; sourceTree = "<group>"; };
 		BC0451CD221EED4B00C3573A /* chargepointview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chargepointview.swift; sourceTree = "<group>"; };
 		BC0451D1221F10A300C3573A /* stopchargeview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stopchargeview.swift; sourceTree = "<group>"; };
+		BC0451D5221F352F00C3573A /* constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constant.swift; sourceTree = "<group>"; };
 		E33B39151FE1442FEF29A8A7 /* Pods-voltaIOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-voltaIOS.debug.xcconfig"; path = "Target Support Files/Pods-voltaIOS/Pods-voltaIOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +86,7 @@
 		BC0451B0221E933100C3573A /* voltaIOS */ = {
 			isa = PBXGroup;
 			children = (
+				BC0451D5221F352F00C3573A /* constant.swift */,
 				BC0451B1221E933100C3573A /* AppDelegate.swift */,
 				BC0451B3221E933100C3573A /* ViewController.swift */,
 				BC0451B5221E933100C3573A /* Main.storyboard */,
@@ -240,6 +243,7 @@
 				BC0451CA221EB19E00C3573A /* scanview.swift in Sources */,
 				BC0451C6221EA1D700C3573A /* signuppage.swift in Sources */,
 				BC0451D2221F10A300C3573A /* stopchargeview.swift in Sources */,
+				BC0451D6221F352F00C3573A /* constant.swift in Sources */,
 				BC0451C4221E9C7800C3573A /* signupview.swift in Sources */,
 				BC0451CE221EED4B00C3573A /* chargepointview.swift in Sources */,
 			);
